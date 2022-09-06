@@ -1,18 +1,28 @@
-from django.urls.base import reverse
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.contrib.auth.hashers import make_password
 from rest_framework import status
-import json
+from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from django.utils import timezone
-from auth_app.models import * 
-from auth_app.serializers import *
+from auth_app.models import User
+from auth_app.serializers import UserSerializer
 
-class Hello(APIView):
-    '''
-    For Welcoming :)
-    '''
-    def get(self, request):
-        data = {
-            "query": "Hello World"
-        }
-        return Response(data=data, status=status.HTTP_200_OK)
+
+class SignUp(APIView):
+    """User SignUp API"""
+
+    def post(self, request):
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save(password=make_password(request.data["password"]))
+            refresh_token = RefreshToken.for_user(user)
+            access_token = AccessToken.for_user(user)
+            res = {
+                "email": str(user),
+                "access_token": str(access_token),
+                "refresh_token": str(refresh_token),
+            }
+            return Response(data=res, status=status.HTTP_201_CREATED)
+        return Response(
+            data={"message": "Data no valid."}, status=status.HTTP_400_BAD_REQUEST
+        )
