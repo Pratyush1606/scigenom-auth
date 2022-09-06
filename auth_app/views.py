@@ -8,8 +8,8 @@ from auth_app.models import User
 from auth_app.serializers import UserSerializer
 
 
-class SignUp(APIView):
-    """User SignUp API"""
+class Signup(APIView):
+    """User Signup API"""
 
     def post(self, request):
         serializer = UserSerializer(data=request.data)
