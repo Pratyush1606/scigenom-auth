@@ -1,2 +1,2 @@
 # scigenom-auth
-This repo contains the auth microservice for authentication.
+This repo contains the microservice for authentication.
