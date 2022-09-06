@@ -44,7 +44,16 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "auth_app.apps.AuthAppConfig",
+    "rest_framework_simplejwt",
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ],
+}
+
+SIMPLE_JWT = {"AUTH_HEADER_TYPES": ("JWT",), "USER_ID_FIELD": "user_id"}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
