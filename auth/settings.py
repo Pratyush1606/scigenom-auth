@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 DEBUG = os.getenv("DJANGO_DEBUG") != "False"
 
 ALLOWED_HOSTS = []
-
+AUTH_USER_MODEL = "auth_app.User"
 
 # Application definition
 
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "auth_app.apps.AuthAppConfig",
 ]
 
 MIDDLEWARE = [
