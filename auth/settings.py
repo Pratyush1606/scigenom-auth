@@ -45,15 +45,19 @@ INSTALLED_APPS = [
     "rest_framework",
     "auth_app.apps.AuthAppConfig",
     "rest_framework_simplejwt",
+    "data_app.apps.DataAppConfig",
 ]
 
 REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
 }
 
-SIMPLE_JWT = {"AUTH_HEADER_TYPES": ("JWT",), "USER_ID_FIELD": "user_id"}
+SIMPLE_JWT = {"AUTH_HEADER_TYPES": ("Bearer",), "USER_ID_FIELD": "user_id"}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

@@ -3,8 +3,6 @@ from rest_framework.response import Response
 from django.contrib.auth.hashers import make_password
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
-from django.utils import timezone
-from auth_app.models import User
 from auth_app.serializers import UserSerializer
 
 
