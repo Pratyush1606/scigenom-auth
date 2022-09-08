@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "auth_app.apps.AuthAppConfig",
     "rest_framework_simplejwt",
+    "data_app.apps.DataAppConfig",
 ]
 
 REST_FRAMEWORK = {
