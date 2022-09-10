@@ -31,7 +31,8 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DJANGO_DEBUG") != "False"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["scigenom-backend.herokuapp.com", "localhost", "127.0.0.1"]
+
 AUTH_USER_MODEL = "auth_app.User"
 
 # Application definition
